@@ -42,14 +42,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Crouch"))
         {
             crouch = true;
+            Debug.Log("Player is crouching");
         }
         else if (Input.GetButtonUp("Crouch"))
         {
             crouch = false;
         }
-
-
-        //change = Vector2.zero;
     }
 
 

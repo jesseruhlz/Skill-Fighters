@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
 
     public float runspeed = 25f;
     float horizontalMove = 0f;
-    bool jumpFlag = false;
     bool jump = false;
     bool crouch = false;
 

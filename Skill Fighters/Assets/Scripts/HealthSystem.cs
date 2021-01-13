@@ -7,14 +7,21 @@ using UnityEngine;
 // Basic system with a positive number meaning that object is alive, and zero 
 // meaning that the object is dead
 
-public class HealthSystem 
+public class HealthSystem : MonoBehaviour
 {
     private int health;
-    private int healthMax;
+    public int healthMax = 100;
 
+    /*
    public HealthSystem(int health)
     {
-        this.health = health;
+        //this.health = health;
+        health = healthMax;
+    }
+    */
+
+    void Start()
+    {
         health = healthMax;
     }
 
@@ -26,7 +33,17 @@ public class HealthSystem
     public void Damage(int damageAmount)
     {
         health -= damageAmount;
-        if (health < 0) health = 0;
+        
+        if(health <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        //die animation and disable the plalyer
+        Debug.Log("Enemy died");
     }
 
 }

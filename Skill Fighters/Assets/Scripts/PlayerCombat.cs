@@ -11,7 +11,11 @@ public class PlayerCombat : MonoBehaviour
     // in this case when making player2 layer we will assign it to this
     public LayerMask enemyLayers;
 
-    public int attackDamage = 10;
+    public int attackDamage1 = 10;
+    public int attackDamage2 = 25;
+    public int attackDamage3 = 50;
+
+    //public HealthBar healthbar;
 
     // Update is called once per frame
     void Update()
@@ -19,13 +23,25 @@ public class PlayerCombat : MonoBehaviour
         // if 'Q' is pressed, it will trigger attack 1
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Attack();
+            Attack1();
             Debug.Log("Player has attacked with Q");
         }
         // will need 3 more keys for each attack type
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Attack2();
+            Debug.Log("Player has attacked with E");
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Attack3();
+            Debug.Log("Player has attacked with R");
+        }
+
     }
 
-    void Attack()
+    void Attack1()
     {
         // Play an attack animation
         // Detect enemies in range of attack
@@ -37,7 +53,39 @@ public class PlayerCombat : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             Debug.Log("We hit the enemy");
-            enemy.GetComponent<HealthSystem>().Damage(attackDamage);
+            enemy.GetComponent<HealthSystem>().Damage(attackDamage1);
+        }
+    }
+
+    void Attack2()
+    {
+        // Play an attack animation
+        // Detect enemies in range of attack
+        // Apply damage to them
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+        //damage enemy
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            Debug.Log("We hit the enemy");
+            enemy.GetComponent<HealthSystem>().Damage(attackDamage2);
+        }
+    }
+
+    void Attack3()
+    {
+        // Play an attack animation
+        // Detect enemies in range of attack
+        // Apply damage to them
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+        //damage enemy
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            Debug.Log("We hit the enemy");
+            enemy.GetComponent<HealthSystem>().Damage(attackDamage3);
         }
     }
 

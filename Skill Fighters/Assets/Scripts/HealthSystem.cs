@@ -12,6 +12,8 @@ public class HealthSystem : MonoBehaviour
     private int health;
     public int healthMax = 100;
 
+    public HealthBar healthBar;
+
     /*
    public HealthSystem(int health)
     {
@@ -23,6 +25,7 @@ public class HealthSystem : MonoBehaviour
     void Start()
     {
         health = healthMax;
+        healthBar.SetMaxHealth(healthMax);
     }
 
     public int GetHealth()
@@ -38,6 +41,7 @@ public class HealthSystem : MonoBehaviour
         {
             Die();
         }
+        healthBar.SetHealth(health);
     }
 
     void Die()

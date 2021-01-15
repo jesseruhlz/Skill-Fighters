@@ -11,9 +11,14 @@ public class PlayerCombat : MonoBehaviour
     // in this case when making player2 layer we will assign it to this
     public LayerMask enemyLayers;
 
+    // Amount each attack does to player2/enemy
     public int attackDamage1 = 10;
     public int attackDamage2 = 25;
     public int attackDamage3 = 50;
+
+    // Amount each attack uses up stamina
+    public int attack2Stamina = 10;
+    public int attack3Stamina = 35;
 
     //public HealthBar healthbar;
 
@@ -71,6 +76,7 @@ public class PlayerCombat : MonoBehaviour
             Debug.Log("We hit the enemy");
             enemy.GetComponent<HealthSystem>().Damage(attackDamage2);
         }
+        GetComponent<StaminaSystem>().AttackStamina(attack2Stamina);
     }
 
     void Attack3()

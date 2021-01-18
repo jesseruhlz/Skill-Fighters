@@ -20,25 +20,28 @@ public class PlayerCombat : MonoBehaviour
     public int attack2Stamina = 10;
     public int attack3Stamina = 35;
 
-    //public HealthBar healthbar;
+    // Creating the custom attack controls that can be changed for two different characters
+    public KeyCode lightAttack;
+    public KeyCode heavyAttack;
+    public KeyCode ultimateAttack;
 
     // Update is called once per frame
     void Update()
     {
         // if 'Q' is pressed, it will trigger attack 1
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(lightAttack))
         {
             Attack1();
             Debug.Log("Player has attacked with Q");
         }
         // will need 3 more keys for each attack type
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(heavyAttack))
         {
             Attack2();
             Debug.Log("Player has attacked with E");
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(ultimateAttack))
         {
             Attack3();
             Debug.Log("Player has attacked with R");
@@ -76,7 +79,7 @@ public class PlayerCombat : MonoBehaviour
             Debug.Log("We hit the enemy");
             enemy.GetComponent<HealthSystem>().Damage(attackDamage2);
         }
-        GetComponent<StaminaSystem>().AttackStamina(attack2Stamina);
+        //GetComponent<StaminaSystem>().AttackStamina(attack2Stamina);
     }
 
     void Attack3()
